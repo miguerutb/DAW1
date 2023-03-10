@@ -26,6 +26,9 @@
         -   [Sombras (_tex-shadow_ y _box-shadow_)](#sombras-tex-shadow-y-box-shadow)
         -   [Fuentes](#fuentes)
         -   [Media queries](#media-queries)
+-   [Tema 7 - Flexbox](#tema-7---flexbox)
+    -   [Container](#container)
+    -   [Children](#children)
 
 # Tema 6
 
@@ -351,3 +354,25 @@ La etiqueta `<input type="email">` permite introducir y validar una dirección d
 	}
 }
 ```
+
+# Tema 7 - Flexbox
+
+## Container
+
+| propiedad       | valores                                                            | descripcion                                   |
+| --------------- | ------------------------------------------------------------------ | --------------------------------------------- |
+| flex-direction  | row row-reverse column column-reverse                              | Eje principal                                 |
+| flex-wrap       | nowrap wrap wrap-reverse                                           | Agrupa o no en una linea                      |
+| justify-content | flex-start flex-end center space-between space-around space-evenly | Distribucion en el eje principal              |
+| align-items     | flex-start flex-end center baseline stretch                        | Distribucion en el eje secundario             |
+| align-content   | flex-start flex-end center space-between space-around stretch      | Solo tiene efecto cuando hay mas de una linea |
+
+## Children
+
+| propiedad   | valores                                     | descripcion                                                |
+| ----------- | ------------------------------------------- | ---------------------------------------------------------- |
+| order       | _int_                                       | Orden de cada hijo                                         |
+| flex-grow   | _int_                                       | Tasa de crecimiento de cada hijo                           |
+| flex-basis  | _%_                                         | Tamaño **antes** de que se distribuya el espacio en blanco |
+| flex-shrink | _int_                                       | Tasa de decrecimiento de cada hijo                         |
+| align-self  | flex-start flex-end center baseline stretch | Posicionamiento individual como _align-items_              |
