@@ -1,4 +1,4 @@
--   [Tema 6](#tema-6)
+-   [Tema 6 - CSS II](#tema-6---css-ii)
     -   [Posicionamiento (_position_, _float_ y _clear_)](#posicionamiento-position-float-y-clear)
         -   [Posicionamiento estático](#posicionamiento-estático)
         -   [Posicionamiento relativo](#posicionamiento-relativo)
@@ -11,7 +11,7 @@
     -   [Visibilidad (_visibility_)](#visibilidad-visibility)
     -   [Visualización (_display_)](#visualización-display)
         -   [Table](#table)
--   [Tema 7](#tema-7)
+-   [Tema 7 - HTML5 y CSS3](#tema-7---html5-y-css3)
     -   [HTML5](#html5)
     -   [Etiquetas de sección de pagina (_header_, _nav_, _footer_, _aside_, _section_ y _article_)](#etiquetas-de-sección-de-pagina-header-nav-footer-aside-section-y-article)
     -   [Formularios](#formularios)
@@ -29,8 +29,19 @@
 -   [Tema 7 - Flexbox](#tema-7---flexbox)
     -   [Container](#container)
     -   [Children](#children)
+-   [Tema 8 - XML](#tema-8---xml)
+    -   [Tecnologías XML](#tecnologías-xml)
+    -   [Estructura](#estructura)
+        -   [Elemento raíz](#elemento-raíz)
+        -   [Elementos](#elementos)
+        -   [Atributos](#atributos)
+        -   [Caracteres especiales](#caracteres-especiales)
+        -   [CDATA](#cdata)
+        -   [Instrucciones de procesamiento](#instrucciones-de-procesamiento)
+        -   [Namespaces](#namespaces)
+    -   [Documento bien formado](#documento-bien-formado)
 
-# Tema 6
+# Tema 6 - CSS II
 
 ## Posicionamiento (_position_, _float_ y _clear_)
 
@@ -167,7 +178,7 @@ El elemento table presenta problemas de accesibilidad y suele utilizarse `displa
 }
 ```
 
-# Tema 7
+# Tema 7 - HTML5 y CSS3
 
 ## HTML5
 
@@ -376,3 +387,101 @@ La etiqueta `<input type="email">` permite introducir y validar una dirección d
 | flex-basis  | _%_                                         | Tamaño **antes** de que se distribuya el espacio en blanco |
 | flex-shrink | _int_                                       | Tasa de decrecimiento de cada hijo                         |
 | align-self  | flex-start flex-end center baseline stretch | Posicionamiento individual como _align-items_              |
+
+# Tema 8 - XML
+
+## Tecnologías XML
+
+-   **XML**: Tecnología base
+-   **DTD** / **XML Schema**: Especifica reglas para validar XML
+-   **Namespacing**: Espacios de nombres
+-   **XPath**: Consulta
+-   **XQuery**: Consulta como base de datos
+-   **CSS**: Presentación visual
+-   **DOM**: Acceder a la estructura jerarquica de un XML
+-   **XForms**: Formularios
+-   **XLink**: Hipervínculos
+
+## Estructura
+
+### Elemento raíz
+
+Un elemento único del que cuelgan todos los demás.
+
+### Elementos
+
+-   **Simples**: Sólo contienen texto
+-   **Otros elementos**: Tienen otros elementos como hijos
+-   **Combinados**: Contienen texto y otros elementos
+-   **Vacíos**: Sin contenido
+
+### Atributos
+
+Información complementaria con un orden irrelevante y no se pueden duplicar.
+
+### Caracteres especiales
+
+| entidad | carácter |
+| ------- | -------- |
+| &amp ;  | &amp;    |
+| &lt ;   | &lt;     |
+| &gt ;   | &gt;     |
+| &apos ; | &apos;   |
+| &quot ; | &quot;   |
+
+### CDATA
+
+Caracteres que no se analizan por parte del procesador XML y permite incluir caracteres especiales.
+
+```xml
+<lista>
+	<nombre>John Doe</nombre>
+	<correo> <![CDATA[<jdoe@server.com>]]> </correo>
+</lista>
+```
+
+### Instrucciones de procesamiento
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+```
+
+### Namespaces
+
+Mecanismo que usa prefijos para evitar conflictos de nombres y distinguir entre elementos y atributos con mismo nombre y distintas funciones.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+	<e1:ejemplo xmlns:e1="http://www.abrirllave.com/ejemplo1"
+				xmlns:e2="http://www.abrirllave.com/ejemplo2">
+	<e1:carta>
+		<e1:palo>Corazones</e1:palo>
+		<e1:numero>7</e1:numero>
+	</e1:carta>
+	<e2:carta>
+		<e2:carnes>
+			<e2:filete_de_ternera precio="12.95"/>
+			<e2:solomillo_a_la_pimienta precio="13.60"/>
+		</e2:carnes>
+		<e2:pescados>
+			<e2:lenguado_al_horno precio="16.20"/>
+			<e2:merluza_en_salsa_verde precio="15.85"/>
+		</e2:pescados>
+	</e2:carta>
+</e1:ejemplo>
+```
+
+## Documento bien formado
+
+Se dice que esta bien formado si cumple las reglas del W3C:
+
+-   Empezar por la instruccion de procesamiento; también se puede incluir el atributo `standalone=yes` si no requiere de archivos externos
+-   Puede incluir declaraciones DTD
+-   Un único elemento raíz
+-   Cierre de elementos:
+    -   Vacíos: `<prueba/>`
+    -   No vacíos: `<prueba> </prueba>`
+-   Anidación correcta
+-   Case sensitive
+-   Atributos entre comillas y no duplicados en el mismo elemento
+-   Sin comentarios en ningún lugar del contenido de los elementos
