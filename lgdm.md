@@ -40,6 +40,20 @@
         -   [Instrucciones de procesamiento](#instrucciones-de-procesamiento)
         -   [Namespaces](#namespaces)
     -   [Documento bien formado](#documento-bien-formado)
+-   [Tema 9 - DTD](#tema-9---dtd)
+    -   [Declaración](#declaración)
+        -   [Interna](#interna)
+        -   [Externa](#externa)
+    -   [Elementos](#elementos-1)
+        -   [Elementos vacíos](#elementos-vacíos)
+        -   [Elementos con cualquier contenido](#elementos-con-cualquier-contenido)
+        -   [Elementos solo con información](#elementos-solo-con-información)
+        -   [Elementos que contienen otros elementos](#elementos-que-contienen-otros-elementos)
+    -   [Atributos](#atributos-1)
+        -   [Tipo de atributo](#tipo-de-atributo)
+        -   [Valores de atributos](#valores-de-atributos)
+    -   [Entidades](#entidades)
+    -   [Validación online](#validación-online)
 
 # Tema 6 - CSS II
 
@@ -435,7 +449,6 @@ Caracteres que no se analizan por parte del procesador XML y permite incluir car
 
 ```xml
 <lista>
-	<nombre>John Doe</nombre>
 	<correo> <![CDATA[<jdoe@server.com>]]> </correo>
 </lista>
 ```
@@ -485,3 +498,130 @@ Se dice que esta bien formado si cumple las reglas del W3C:
 -   Case sensitive
 -   Atributos entre comillas y no duplicados en el mismo elemento
 -   Sin comentarios en ningún lugar del contenido de los elementos
+
+# Tema 9 - DTD
+
+## Declaración
+
+### Interna
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE nota
+[
+	<!ELEMENT nota (destinatario,remitente,cabecera,cuerpo)>
+	<!ELEMENT destinatario (#PCDATA)>
+	<!ELEMENT remitente (#PCDATA)>
+	<!ELEMENT cabecera (#PCDATA)>
+	<!ELEMENT cuerpo (#PCDATA)>
+]>
+<nota>
+	<destinatario>Tove</destinatario>
+	<remitente>Jani</remitente>
+	<cabecera>Recordatorio</cabecera>
+	<cuerpo>Llámame!</cuerpo>
+</nota>
+```
+
+### Externa
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE nota SYSTEM "Ejemplo1-Externa.dtd">
+<nota>
+	<destinatario>Tove</destinatario>
+	<remitente>Jani</remitente>
+	<cabecera>Recordatorio</cabecera>
+	<cuerpo>Llámame!</cuerpo>
+</nota>
+```
+
+```xml
+<!ELEMENT nota (destinatario,remitente,cabecera,cuerpo)>
+<!ELEMENT destinatario (#PCDATA)>
+<!ELEMENT remitente (#PCDATA)>
+<!ELEMENT cabecera (#PCDATA)>
+<!ELEMENT cuerpo (#PCDATA)>
+```
+
+## Elementos
+
+### Elementos vacíos
+
+```xml
+<!ELEMENT nombre EMPTY>
+```
+
+### Elementos con cualquier contenido
+
+```xml
+<!ELEMENT nombre ANY>
+```
+
+### Elementos solo con información
+
+```xml
+<!ELEMENT nombre (#PCDATA)>
+```
+
+### Elementos que contienen otros elementos
+
+-   **Cardinalidad**: cuántas veces puede aparecer un elemento
+    -   \*: 0 ó más veces
+    -   ?: 0 ó 1 vez
+    -   +: 1 ó más veces
+    -   : sólo una vez
+-   **Secuencias**: orden en el que aparecen
+    -   A, B: primero A y después B
+    -   A | B: sólo aparece uno; A o B
+
+## Atributos
+
+```xml
+<!ATTLIST pago metodo CDATA "cheque">
+<!-- ... -->
+<pago metodo="cheque" />
+```
+
+### Tipo de atributo
+
+-   Alfanumérico: `<!ATTLIST coche color CDATA>`
+-   Un valor de una lista (con valor por defecto): `<!ATTLIST semaforo color (rojo | amarillo | verde) "verde">`
+-   Identificador único / Referencia de otro identificador: `ID | IDREF | IDREFS`
+
+### Valores de atributos
+
+| valor de atributo | descripcion                       |
+| ----------------- | --------------------------------- |
+| "valor"           | valor por defecto                 |
+| #REQUIRED         | obligatorio sin valor por defecto |
+| #IMPLIED          | opcional sin valor por defecto    |
+| #FIXED "valor"    | obligatorio y valor por defecto   |
+
+## Entidades
+
+Elemento para guardar informacion que sustituye el parser.
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE pais
+[
+	<!ELEMENT pais (nombre,superficie,nhabitantes,fgobierno)>
+	<!ELEMENT nombre (#PCDATA)>
+	<!ELEMENT superficie (#PCDATA)>
+	<!ELEMENT nhabitantes (#PCDATA)>
+	<!ELEMENT fgobierno (#PCDATA)>
+	<!ENTITY usa "Estados Unidos">
+]>
+<pais>
+	<nombre>&usa;</nombre>
+	<superficie>9,83 millones de km2</superficie>
+	<nhabitantes>Más de 324 millones de habitantes</nhabitantes>
+	<fgobierno>República federal</fgobierno>
+</pais>
+```
+
+## Validación online
+
+-   https://www.xmlvalidation.com/
+-   http://xmlvalidator.new-studio.org/
