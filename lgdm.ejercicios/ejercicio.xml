@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE juegos [
+	<!ELEMENT juegos (juego+)>
+	<!ELEMENT juego (titulo, fecha_lanzamiento, desarrolladoras, descripcion, nota,
+					generos)>
+	<!ELEMENT titulo (#PCDATA)>
+	<!ELEMENT fecha_lanzamiento (#PCDATA)>
+	<!ELEMENT desarrolladoras (desarrolladora+)>	
+	<!ELEMENT desarrolladora (#PCDATA)>	
+	<!ELEMENT descripcion (#PCDATA)>	
+	<!ELEMENT nota (#PCDATA)>	
+	<!ELEMENT generos (genero+)>	
+	<!ELEMENT genero (#PCDATA)>	
+	<!ATTLIST titulo estado (jugando|jugado|abandonado|EMPTY) "">
+]>
+<juegos>
+    <juego>
+		<titulo estado="jugando">Atomic Heart</titulo>
+		<fecha_lanzamiento>2023</fecha_lanzamiento>
+		<desarrolladoras>
+			<desarrolladora>Mundfish</desarrolladora>
+			<desarrolladora>Focus</desarrolladora>
+		</desarrolladoras>
+		<descripcion></descripcion>
+		<nota>3</nota>
+		<generos>
+			<genero>Aventura</genero>
+			<genero>RPG</genero>
+			<genero>Shooter</genero>
+		</generos>
+	</juego>
+</juegos>
