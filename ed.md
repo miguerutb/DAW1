@@ -22,6 +22,8 @@
         -   [Convenios de nombres](#convenios-de-nombres)
     -   [Documentación](#documentación)
     -   [IMPORTANTE PARA LA PRÁCTICA](#importante-para-la-práctica)
+-   [Tema 6 - Refactorización](#tema-6---refactorización)
+    -   [Visual Studio](#visual-studio)
 
 # Tema 4 - Pruebas
 
@@ -272,3 +274,16 @@ public class Coche : IMotorizado
     -   Build > Presentation style 2013 > chm
     -   Help File > Spanish > Footer nombre
     -   Visibility > Private fields
+
+# Tema 6 - Refactorización
+
+## Visual Studio
+
+-   Tabulación
+-   Renombrar
+-   Encapsular: convertir campo público en propiedad
+-   Extraer método: crear nuevo método a partir de un fragmento de código existente
+-   Quitar parámetros: cuando ya no necesitamos datos de entrada en un método
+-   Reordenar parámetros
+-   Extraer interfaz
+-   Números mágicos
