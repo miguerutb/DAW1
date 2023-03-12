@@ -1,3 +1,28 @@
+-   [Tema 4 - Pruebas](#tema-4---pruebas)
+    -   [Tipos de pruebas](#tipos-de-pruebas)
+        -   [A. Conocimiento del código](#a-conocimiento-del-código)
+        -   [B. Automatización](#b-automatización)
+        -   [C. Fase del ciclo](#c-fase-del-ciclo)
+    -   [Casos de prueba, valores límite y clases de equivalencia](#casos-de-prueba-valores-límite-y-clases-de-equivalencia)
+        -   [Caso de prueba](#caso-de-prueba)
+        -   [Caja blanca](#caja-blanca)
+            -   [Caso de prueba](#caso-de-prueba-1)
+        -   [Caja negra](#caja-negra)
+            -   [Clases de equivalencia](#clases-de-equivalencia)
+            -   [Valores límite](#valores-límite)
+            -   [Ejercicio](#ejercicio)
+-   [Tema 5 - Documentación](#tema-5---documentación)
+    -   [Normas de estilo](#normas-de-estilo)
+        -   [Indentación](#indentación)
+        -   [Espacios en blanco](#espacios-en-blanco)
+        -   [Lineas en blanco](#lineas-en-blanco)
+        -   [Comentarios](#comentarios)
+        -   [Llaves](#llaves)
+        -   [Declaraciones](#declaraciones)
+        -   [Convenios de nombres](#convenios-de-nombres)
+    -   [Documentación](#documentación)
+    -   [IMPORTANTE PARA LA PRÁCTICA](#importante-para-la-práctica)
+
 # Tema 4 - Pruebas
 
 ## Tipos de pruebas
@@ -128,3 +153,122 @@ Puntos de cambio de clases de equivalencia. 2 valores frontera; uno justo **abaj
 | validarReintegro3      | 1000          | saldo = 1000       | 0                      |
 | validarReintegroArray4 | 1000          | saldo + 1 = 1001   | ERR_SALDO_INSUFICIENTE |
 | validarReintegroArray4 | 1000          | saldo + 100 = 1100 | ERR_SALDO_INSUFICIENTE |
+
+# Tema 5 - Documentación
+
+## Normas de estilo
+
+### Indentación
+
+-   Nueva linea despues de coma
+-   Nueva linea despues de operador
+-   Evitar dividir parentesis
+
+### Espacios en blanco
+
+-   Despues de coma o punto y coma
+-   Alrededor de operadores excepto unarios
+
+### Lineas en blanco
+
+-   Separar declaraciones de variables
+-   Separar metodos de propiedades
+-   Separar secciones lógicas dentro de un metodo
+
+### Comentarios
+
+-   Comentarios de documentacion > comentarios de bloque
+-   Comentarios de una linea
+    -   &check; declaracion de variables y final de una estructura
+
+### Llaves
+
+-   Linea independiente excepto `else` y `while`
+-   Evitar omitir llaves
+
+### Declaraciones
+
+-   Una declaración por linea
+-   Nombres autoexplicativos
+
+### Convenios de nombres
+
+-   PasCal -> clases, excepciones, interfaces, métodos, propiedades, enumeraciones, estáticos, readonly y constantes
+-   caMel -> campos y variables
+-   MAYÚSCULAS -> abreviaturas de uno o dos caracteres
+-   Notación húngara -> prefijos que indican el tipo
+-   Evitar snake_case
+
+```csharp
+public interface IMotorizado
+{
+    void Arrancar();
+    void Parar();
+}
+
+public class Coche : IMotorizado
+{
+    // Miembro privado
+    private int velocidadActual;
+
+    // Constructor
+    public Coche()
+    {
+        velocidadActual = 0;
+    }
+
+    // Propiedad pública
+    public int VelocidadActual
+    {
+        get { return velocidadActual; }
+        set { velocidadActual = value; }
+    }
+
+    // Método público
+    public void Acelerar(int cantidad)
+    {
+        velocidadActual += cantidad;
+        Console.WriteLine($"El coche aceleró {cantidad} km/h y ahora va a {velocidadActual} km/h.");
+    }
+
+    // Implementación de la interfaz IMotorizado
+    public void Arrancar()
+    {
+        Console.WriteLine("El coche ha arrancado.");
+    }
+
+    public void Parar()
+    {
+        Console.WriteLine("El coche se ha detenido.");
+    }
+}
+```
+
+## Documentación
+
+-   Summary
+-   Remarks: en conjunto con summary
+-   Param: atributo name
+-   Returns
+-   Value: descripcion del valor que recupera una **propiedad**
+-   Paramref: referencia a los parámetros que recibe una funcion. Atributo name
+-   See: referencia que enlaza usando el atributo cref
+-   SeeAlso
+-   Exception: atributo cref
+-   Para: párrafo
+-   List: type = bullet | numeric | table
+    -   Item
+        -   Description
+-   Example
+    -   Code
+
+## IMPORTANTE PARA LA PRÁCTICA
+
+-   Tras añadir los comentarios de documentación
+    -   Proyecto > Propiedades > Compilación > Salida > Archivo de documentación XML
+-   Solucion > Agregar > Nuevo proyecto > Sandcastle Help File Builder Project
+-   ProyectoDocumentacion > Documentation Source > ProyectoClases.csproj
+-   Project Properties >
+    -   Build > Presentation style 2013 > chm
+    -   Help File > Spanish > Footer nombre
+    -   Visibility > Private fields
